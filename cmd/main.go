@@ -34,7 +34,8 @@ func main() {
 		fmt.Println("checkpoint 1")
 		fmt.Println(value)
 
-		// ignore request and send back a PONG
-		conn.Write([]byte("+OK\r\n"))
+
+		writer := NewWriter(conn)
+		writer.Write(Value{typ: "string", str: "OK"})
 	}
 }
